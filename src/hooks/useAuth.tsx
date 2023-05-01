@@ -44,16 +44,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 				if (token && isValidToken(token)) {
 					setSession(token);
 
-					const response = await api.get("/login");
+					const response = await api.get("/auth/me");
 
-					const client = response.data.client;
-					const requestor = response.data.requestor;
-
-					localStorage.setItem("client-name", client.name);
-					localStorage.setItem("requestor-name", requestor.name);
-					localStorage.setItem("requestor-email", requestor.email);
-					localStorage.setItem("requestor-coordinator", requestor.coordinator);
-					localStorage.setItem("first-access", requestor.firstAccess);
+					localStorage.setItem("user_name", response.data.name);
+					localStorage.setItem("user_email", response.data.email);
 
 					setIsAuthenticated(true);
 				}
@@ -72,25 +66,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
 		setIsLoading(true);
 
 		try {
-			let response = await api.post("/login", {
+			let response = await api.post("/auth", {
 				email,
 				password
 			});
 
-			const token: string = response.data.token;
+			const access_token: string = response.data.access_token;
 
-			setSession(token);
+			setSession(access_token);
 
-			response = await api.get("/login");
+			response = await api.get("/auth/me");
 
-			const client = response.data.client;
-			const requestor = response.data.requestor;
-
-			localStorage.setItem("client-name", client.name);
-			localStorage.setItem("requestor-name", requestor.name);
-			localStorage.setItem("requestor-email", requestor.email);
-			localStorage.setItem("requestor-coordinator", requestor.coordinator);
-			localStorage.setItem("first-access", requestor.firstAccess);
+			localStorage.setItem("user_name", response.data.name);
+			localStorage.setItem("user_email", response.data.email);
 
 			setIsAuthenticated(true);
 		} catch (err) {
@@ -109,7 +97,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 		localStorage.clear();
 
-		if(settings){
+		if (settings) {
 			localStorage.setItem("settings", settings);
 		}
 

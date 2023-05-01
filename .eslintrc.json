@@ -21,6 +21,7 @@
   "rules": {
     "prefer-const": "off",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "indent": [
       "error",
       "tab"
