@@ -7,7 +7,7 @@ export function GuestGuard() {
 	const { isAuthenticated } = useAuth();
 
 	if (isAuthenticated) {
-		return <Navigate to={"/landing"} />;
+		return <Navigate to={"/termos"} />;
 	}
 
 	return <Outlet />;

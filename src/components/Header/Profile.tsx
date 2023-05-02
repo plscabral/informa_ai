@@ -9,17 +9,17 @@ export function Profile() {
 			<Box textAlign="right">
 				<Text
 					fontWeight="bold"
-					fontSize="sm"
-					textTransform="capitalize"
+					fontSize="small"
+					textTransform="uppercase"
 				>
 					{user_name}
 				</Text>
 
 				<Text
-					color="cyan.400"
+					color="gray.400"
 					fontWeight="bold"
-					fontSize="sm"
-					textTransform="lowercase"
+					fontSize="small"
+					textTransform="uppercase"
 				>
 					{user_email}
 				</Text>

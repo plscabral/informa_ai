@@ -1,27 +1,24 @@
 // @chakra ui
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 // components
+import { Logo } from "../Logo";
 import { Profile } from "./Profile";
 import { Logout } from "./Logout";
-
-// assets
-import logo from "../../assets/Informa.ai.png";
 
 export function Header() {
 	return (
 		<Flex
 			as="header"
 			w="100%"
+			maxW={1480}
 			h="20"
 			mx="auto"
+			mt="4"
 			align="center"
 			px="6"
-			borderBottom={"1px solid"}
-			borderBottomColor={"cyan.500"}
-			position="fixed"
 		>
-			<Image src={logo} width="120px" />
+			<Logo />
 
 			<Flex
 				align="center"

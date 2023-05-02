@@ -12,14 +12,15 @@ export function Logout() {
 	return (
 		<Tooltip hasArrow label='Fazer logout' >
 			<IconButton
-				ml={5}
-				variant="ghost"
+				ml={10}
+				variant="unstyled"
+				color={"cyan.500"}
 				transition="filter(0.2)"
 				_hover={{
-					backgroundColor: "cyan.400",
+					filter: "brightness(0.9)"
 				}}
 				aria-label='Sair'
-				icon={<MdLogout fontSize={24} color={"cyan.400"} />}
+				icon={<MdLogout fontSize={24} color={"red.400"} />}
 				onClick={handleLogout}
 			/>
 		</Tooltip>

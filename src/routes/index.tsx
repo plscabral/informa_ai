@@ -6,7 +6,9 @@ import { GuestGuard } from "./guards/GuestGuard";
 // pages
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
-import { Landing } from "../pages/Landing";
+import { Feed } from "../pages/Feed";
+import { TermList } from "../pages/TermList";
+import { TermCreate } from "../pages/TermCreate";
 
 export function Routers() {
 	return (
@@ -19,7 +21,9 @@ export function Routers() {
 				</Route>
 
 				<Route element={<AuthGuard />}>
-					<Route element={<Landing />} path="/landing" />
+					<Route element={<Feed />} path="/feed" />
+					<Route element={<TermList />} path="/termos" />
+					<Route element={<TermCreate />} path="/termos/criar-novo" />
 					{/* <Route element={<CreateNewTicket />} path="/criar-ticket" />
           <Route element={<DetailTicket />} path="/detalhe-ticket/:ticketId" /> */}
 				</Route>

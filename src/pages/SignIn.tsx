@@ -9,14 +9,11 @@ import {
 	VStack,
 	Button,
 	Text,
-	Link,
-	Image
+	Link
 } from "@chakra-ui/react";
 import { MasterPage } from "../components/MasterPage";
 import { Input } from "../components/Input";
-
-// assets
-import logoImg from "../assets/Informa.ai.png";
+import { Logo } from "../components/Logo";
 
 // forms
 import zod from "zod";
@@ -69,7 +66,7 @@ export function SignIn() {
 						onSubmit={handleSubmit(handleSignIn)}
 					>
 						<VStack spacing="5">
-							<Image src={logoImg} />
+							<Logo />
 
 							<Input
 								placeholder="E-mail"

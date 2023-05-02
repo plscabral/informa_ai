@@ -13,15 +13,13 @@ import {
 	Button,
 	Text,
 	Link,
-	Image,
 	Heading,
 	useToast
 } from "@chakra-ui/react";
 import { MasterPage } from "../components/MasterPage";
 import { Input } from "../components/Input";
+import { Logo } from "../components/Logo";
 
-// assets
-import logoImg from "../assets/Informa.ai.png";
 
 // forms
 import zod from "zod";
@@ -109,8 +107,10 @@ export function SignUp() {
 						flexDirection="column"
 						onSubmit={handleSubmit(handleSignUp)}
 					>
-						<VStack spacing="5">
-							<Image src={logoImg} mb={3} />
+						<VStack spacing="5" width={"100%"}>
+							<Flex flex={1} width={"100%"} justify={"center"} align={"center"}>
+								<Logo />
+							</Flex>
 
 							<Heading
 								size="sm"
