@@ -10,7 +10,7 @@ export function MasterPage({ titlePage, children }: Props) {
 	return (
 		<>
 			<Helmet>
-				<title>Informa aí | {titlePage}</title>
+				<title>Noticiei - {titlePage}</title>
 			</Helmet>
 
 			{children}

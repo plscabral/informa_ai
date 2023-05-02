@@ -1,5 +1,4 @@
 export type Article = {
-  // id: string;
   author: string;
   title: string;
   description: string;
@@ -8,7 +7,6 @@ export type Article = {
   urlToImage: string;
   publishedAt: string;
   source: {
-    id: number;
     name: string;
   };
 }

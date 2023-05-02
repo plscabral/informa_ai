@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link as LinkReactRouterDom } from "react-router-dom";
+
+// utils
+import { api } from "../utils/api";
+import { fDateTime } from "../utils/formatTime";
 
 // @chakra
 import {
@@ -16,7 +20,8 @@ import {
 	Th,
 	Tbody,
 	Td,
-	IconButton
+	IconButton,
+	useToast
 } from "@chakra-ui/react";
 
 // components
@@ -25,33 +30,49 @@ import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
 // // types
-// import { Article } from "../types/Article";
+import { Term } from "../types/Term";
 
 // icons
 import { RiAddLine, RiDeleteBinFill } from "react-icons/ri";
-import { Input } from "../components/Input";
 
 export function TermList() {
+	const toast = useToast({
+		position: "bottom-right",
+		duration: 4000,
+		containerStyle: {
+			mb: "20px"
+		},
+	});
+
 	const [isLoading, setIsLoading] = useState(false);
+	const [terms, setTerms] = useState<Term[]>([]);
 
-	// const [articles, setArticles] = useState<Article[]>([]);
+	async function handleGetArticles() {
+		try {
+			setIsLoading(true);
 
-	// async function handleGetArticles() {
-	// 	await fetch(
-	// 		"https://newsapi.org/v2/everything?q=Flamengo&sortBy=publishedAt&apiKey=3bf9c14f840245fcb11c521bfee34767&language=pt", {
-	// 			method: "GET",
-	// 		}).then((response) => response.json()).then((responseData) => {
-	// 		console.log(responseData);
-	// 		setArticles(responseData.articles);
-	// 	});
-	// }
+			const response = await api.get("/terms");
 
-	// useEffect(() => {
-	// 	handleGetArticles();
-	// }, []);
+			setTerms(response.data);
+		}
+		catch (err) {
+			toast({
+				title: "Error ao obter termos!",
+				status: "error",
+				isClosable: true
+			});
+		}
+		finally {
+			setIsLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		handleGetArticles();
+	}, []);
 
 	return (
-		<MasterPage titlePage="Lista de termos">
+		<MasterPage titlePage="Termos">
 			<Flex direction="column" h="100vh">
 				<Header />
 
@@ -87,8 +108,6 @@ export function TermList() {
 						<Flex mb="8" justify="space-between" align="center">
 							<Heading size="lg" fontWeight="normal">
                 Termos
-
-								{!isLoading && <Spinner size="sm" color="gray.500" ml="4" />}
 							</Heading>
 
 							<Link as={LinkReactRouterDom} to="/termos/criar-novo">
@@ -118,53 +137,27 @@ export function TermList() {
 									</Thead>
 
 									<Tbody>
-										<Tr>
-											<Td>Flamengo</Td>
-											<Td>01/05/2023 23:04</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Bitcoin</Td>
-											<Td>01/05/2023 22:55</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
+										{
+											terms.map(term => {
+												return (
+													<Tr key={term.id}>
+														<Td>{term.description}</Td>
+														<Td>{fDateTime(term.created_at)}</Td>
+														<Td>
+															<IconButton
+																aria-label=""
+																icon={<RiDeleteBinFill fontSize="18px" />}
+																bg="red.500"
+																transition="filter(0.2)"
+																_hover={{
+																	filter: "brightness(0.9)"
+																}}
+															/>
+														</Td>
+													</Tr>
+												);
+											})
+										}
 									</Tbody>
 								</Table>
 							)

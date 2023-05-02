@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link as LinkReactRouterDom } from "react-router-dom";
+import { Link as LinkReactRouterDom, useNavigate } from "react-router-dom";
+
+// utils
+import { api } from "../utils/api";
 
 // @chakra
 import {
@@ -11,7 +14,8 @@ import {
 	SimpleGrid,
 	HStack,
 	Button,
-	Link
+	Link,
+	useToast
 } from "@chakra-ui/react";
 
 // components
@@ -26,25 +30,54 @@ import { useForm, FieldError } from "react-hook-form";
 import { Input } from "../components/Input";
 
 const createNewTermValidationSchema = zod.object({
-	term: zod.string().min(1, { message: "O termo deve ser informado." })
+	description: zod.string().min(1, { message: "O termo deve ser informado." })
 });
 
 type CreateNewTermFormData = zod.infer<typeof createNewTermValidationSchema>
 
 export function TermCreate() {
+	const navigate = useNavigate();
+
+	const toast = useToast({
+		position: "bottom-right",
+		duration: 4000,
+		containerStyle: {
+			mb: "20px"
+		},
+	});
+
 	const [isLoading, setIsLoading] = useState(false);
 
 	const { register, handleSubmit, reset, formState: { errors } } = useForm<CreateNewTermFormData>({
 		resolver: zodResolver(createNewTermValidationSchema),
 		defaultValues: {
-			term: "",
+			description: "",
 		}
 	});
 
+
 	async function handleCreateNewTerm(data: CreateNewTermFormData) {
-		alert(data.term);
-		reset({});
+		setIsLoading(true);
+
+		try {
+			let response = await api.post("/terms", {
+				description: data.description
+			});
+
+			toast({ title: "Termo criado com sucesso!", status: "success" });
+
+			reset();
+
+			navigate("/termos");
+		} catch (err) {
+			toast({ title: "Erro ao criar termo, espere alguns minutos e tente novamente!", status: "error" });
+			console.log(err);
+		}
+		finally {
+			setIsLoading(false);
+		}
 	}
+
 
 	return (
 		<MasterPage titlePage="Criar termo">
@@ -79,8 +112,8 @@ export function TermCreate() {
 								<Input
 									placeholder="Informe o termo que deseja pesquisar"
 									size="lg"
-									error={errors.term && (errors.term as FieldError).message}
-									{...register("term")}
+									error={errors.description && (errors.description as FieldError).message}
+									{...register("description")}
 								/>
 							</SimpleGrid>
 						</VStack>
