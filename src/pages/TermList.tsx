@@ -68,19 +68,19 @@ export function TermList() {
 						flex="1"
 						borderRadius={8}
 						p="8"
-						height={850}
+						height={750}
 						overflow={"auto"}
 						sx={{
 							"&::-webkit-scrollbar": {
-								width: "5px",
+								width: "6px",
 								height: 0,
-								scrollbarWidth: "6px"
 							},
 							"&::-webkit-scrollbar-track": {
 								background: "transparent"
 							},
 							"&::-webkit-scrollbar-thumb": {
-								background: "gray.700"
+								background: "gray.700",
+								borderRadius: 50
 							}
 						}}
 					>
@@ -137,198 +137,6 @@ export function TermList() {
 										<Tr>
 											<Td>Bitcoin</Td>
 											<Td>01/05/2023 22:55</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
-											<Td>
-												<IconButton
-													aria-label=""
-													icon={<RiDeleteBinFill fontSize="18px" />}
-													bg="red.500"
-													transition="filter(0.2)"
-													_hover={{
-														filter: "brightness(0.9)"
-													}}
-												/>
-											</Td>
-										</Tr>
-
-										<Tr>
-											<Td>Programação</Td>
-											<Td>29/04/2023 22:30</Td>
 											<Td>
 												<IconButton
 													aria-label=""

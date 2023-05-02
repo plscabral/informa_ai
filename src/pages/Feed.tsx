@@ -46,19 +46,20 @@ export function Feed() {
 					<Flex
 						flex="1"
 						flexDirection="column"
-						height={850}
+						height={750}
 						overflow={"auto"}
 						sx={{
 							"&::-webkit-scrollbar": {
-								width: "5px",
+								width: "6px",
 								height: 0,
-								scrollbarWidth: "6px"
 							},
 							"&::-webkit-scrollbar-track": {
-								background: "transparent"
+								background: "transparent",
 							},
 							"&::-webkit-scrollbar-thumb": {
-								background: "gray.700"
+								background: "gray.700",
+								height: "100px",
+								borderRadius: 50
 							}
 						}}
 					>
