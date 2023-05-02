@@ -67,6 +67,28 @@ export function TermList() {
 		}
 	}
 
+	async function handleDeleteTerm(id: string) {
+		try {
+			setIsLoading(true);
+
+			const response = await api.delete(`/terms/${id}`);
+
+			setTerms(response.data);
+		}
+		catch (err) {
+			toast({
+				title: "Error ao obter termos!",
+				status: "error",
+				isClosable: true
+			});
+		}
+		finally {
+			setIsLoading(false);
+		}
+
+		handleGetArticles();
+	}
+
 	useEffect(() => {
 		handleGetArticles();
 	}, []);
@@ -152,6 +174,7 @@ export function TermList() {
 																_hover={{
 																	filter: "brightness(0.9)"
 																}}
+																onClick={() => handleDeleteTerm(String(term.id))}
 															/>
 														</Td>
 													</Tr>

@@ -55,7 +55,6 @@ export function TermCreate() {
 		}
 	});
 
-
 	async function handleCreateNewTerm(data: CreateNewTermFormData) {
 		setIsLoading(true);
 
@@ -77,7 +76,6 @@ export function TermCreate() {
 			setIsLoading(false);
 		}
 	}
-
 
 	return (
 		<MasterPage titlePage="Criar termo">
