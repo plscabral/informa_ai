@@ -29,7 +29,7 @@ import { MasterPage } from "../components/MasterPage";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
-// // types
+// types
 import { Term } from "../types/Term";
 
 // icons
